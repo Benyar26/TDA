@@ -115,7 +115,11 @@ def login_view(request):
             password = form.cleaned_data['password']
             if verificar_credenciales(rut, password):
                 messages.success(request, 'Inicio de sesión exitoso.')
-                return redirect('facturas/agregar.html')  # Reemplaza 'inicio' con la ruta a donde quieras redirigir al usuario
+                 if redireccion(rut) == True:
+                    return redirect('http://127.0.0.1:8000/interfaz_admin/')  # Reemplaza 'inicio' con la ruta a donde quieras redirigir al usuario
+                
+                elif redireccion(rut) == False:
+                    return redirect('http://127.0.0.1:8000/Interfaz_usuario_empleado/')
             else:
                 messages.error(request, 'Credenciales incorrectas. Por favor, intenta de nuevo.')
                 return render(request, 'login.html', {'form': form})
