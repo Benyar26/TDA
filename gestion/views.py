@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import *
 from gestion.models import Producto
 from .utils.verificar_credenciales import verificar_credenciales
+from .utils.redireccion import *
 from django.contrib import messages
 
 
